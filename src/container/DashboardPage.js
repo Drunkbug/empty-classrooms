@@ -7,8 +7,11 @@ export default class DashboardPage extends React.Component {
     constructor(props) {
         super(props);
         this.handleAddBuilding = this.handleAddBuilding.bind(this);
+        this.handleDeleteBuilding = this.handleDeleteBuilding.bind(this);
+        this.handleEditBuildings = this.handleEditBuildings.bind(this);
         this.state = {
-            buildings: ['Ryder Hall', 'Snell Library']
+            buildings: [],
+            deleteVisibility: false
         }
     };
 
@@ -44,6 +47,17 @@ export default class DashboardPage extends React.Component {
         }));
     }
 
+    handleDeleteBuilding(buildingName) {
+        this.setState((prevState) => ({
+            buildings: prevState.buildings.filter((building) => buildingName !== building)
+        }));
+    }
+
+    handleEditBuildings() {
+        this.setState((prevState) => ({deleteVisibility: !prevState.deleteVisibility}));
+
+    }
+
     render() {
         const panelTitle="Building List";
         return (
@@ -52,9 +66,13 @@ export default class DashboardPage extends React.Component {
                 <ControlPanel 
                     panelTitle={panelTitle} 
                     handleAddBuilding={this.handleAddBuilding} 
+                    handleEditBuildings={this.handleEditBuildings}
+                    deleteVisibility={this.state.deleteVisibility}
                 />
                 <Buildings 
                     buildings={this.state.buildings}
+                    deleteVisibility={this.state.deleteVisibility}
+                    handleDeleteBuilding={this.handleDeleteBuilding}
                 />
             </div>
         );

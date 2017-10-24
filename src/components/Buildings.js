@@ -10,6 +10,8 @@ const Buildings = (props) => {
                 <Building 
                     key={building}
                     buildingName={building}
+                    deleteVisibility={props.deleteVisibility}
+                    handleDeleteBuilding={props.handleDeleteBuilding}
                 />
             ))}
             </ul>

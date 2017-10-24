@@ -13,8 +13,11 @@ export default class AddBuilding extends React.Component {
         e.preventDefault();
         const buildingName = e.target.elements.buildingName.value.trim();
         const error = this.props.handleAddBuilding(buildingName);
-
         this.setState(() => ({error}));
+
+        if (!error) {
+            e.target.elements.buildingName.value = '';
+        }
     }
 
     render() {
@@ -31,6 +34,12 @@ export default class AddBuilding extends React.Component {
                         <button type="submit" className="btn btn-primary">Add Building</button>
                     </div>
                 </form>
+                {
+                    this.state.error && 
+                    <div className="alert alert-danger" role="alert">
+                        {this.state.error}
+                    </div>
+                }
             </div>
         );
     }

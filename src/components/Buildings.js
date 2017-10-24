@@ -3,7 +3,7 @@ import Building from './Building'
 
 const Buildings = (props) => {
     return (
-        <div>
+        <div className='container'>
             <ul className='list-group'>
             {props.buildings.length ===0 && <p>Please add building to get started!</p>}
             {props.buildings.map((building) => (

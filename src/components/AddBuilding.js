@@ -1,0 +1,37 @@
+import React from 'react';
+
+export default class AddBuilding extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleAddBuilding = this.handleAddBuilding.bind(this);
+        this.state = {
+            error: undefined
+        }
+    }
+
+    handleAddBuilding(e) {
+        e.preventDefault();
+        const buildingName = e.target.elements.buildingName.value.trim();
+        const error = this.props.handleAddBuilding(buildingName);
+
+        this.setState(() => ({error}));
+    }
+
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.handleAddBuilding}>
+                    <div className='form-inline'>
+                        <input 
+                            type='text' 
+                            className='form-control' 
+                            placeholder='Building Name' 
+                            name='buildingName'
+                        />
+                        <button type="submit" className="btn btn-primary">Add Building</button>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+}

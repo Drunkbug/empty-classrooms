@@ -9,5 +9,5 @@ ReactDOM.render(<IndexPage />, document.getElementById('app'));
 // login page -> Student/School 
 // Student -> empty classroom lists
 // Student -> personal info
-// School -> dashboard(arrange classrooms)
+// School -> dashboard(arrange buildings/classrooms)
 // School -> school info

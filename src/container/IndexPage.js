@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import DashboardPage from '../container/DashboardPage';
 
 export default class IndexPage extends React.Component {
@@ -9,8 +8,7 @@ export default class IndexPage extends React.Component {
 
     render() {
         return (
-            <div className='container'>
-                <Header />
+            <div>
                 <DashboardPage />
             </div>
         );

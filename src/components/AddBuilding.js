@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class AddBuilding extends React.Component {
     constructor(props) {
         super(props);
         this.handleAddBuilding = this.handleAddBuilding.bind(this);
         this.state = {
-            error: undefined
-        }
+            error: undefined,
+        };
     }
 
     handleAddBuilding(e) {
@@ -44,3 +45,7 @@ export default class AddBuilding extends React.Component {
         );
     }
 }
+
+AddBuilding.propTypes = {
+    handleAddBuilding: PropTypes.func.isRequired,
+};

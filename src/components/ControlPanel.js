@@ -1,6 +1,8 @@
 import React from 'react';
 import AddBuilding from './AddBuilding';
 import EditBuildings from './EditBuildings';
+import PropTypes from 'prop-types';
+
 const ControlPanel = (props) => {
     return (
         <div className='jumbotron'>
@@ -14,6 +16,14 @@ const ControlPanel = (props) => {
             </div>
         </div>
     );
-}
+};
+
+ControlPanel.propTypes = {
+    panelTitle: PropTypes.string.isRequired,
+    handleAddBuilding: PropTypes.func.isRequired,
+    handleEditBuildings: PropTypes.func.isRequired,
+    deleteVisibility: PropTypes.bool.isRequired,
+};
 
 export default ControlPanel;
+

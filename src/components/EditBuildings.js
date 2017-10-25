@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const EditBuildings = (props) => {
     return (
         <div>
             {props.deleteVisibility ? (
                 <button className="btn btn-success"
-                        onClick={props.handleEditBuildings}>
+                    onClick={props.handleEditBuildings}>
                     Done
                 </button>
             ) : (
@@ -17,6 +18,11 @@ const EditBuildings = (props) => {
             )}
         </div>
     );
-}
+};
 
 export default EditBuildings;
+
+EditBuildings.propTypes = {
+    deleteVisibility: PropTypes.bool.isRequired,
+    handleEditBuildings: PropTypes.func.isRequired,
+};

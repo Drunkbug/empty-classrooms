@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Building extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            classrooms: [102, 103]
-        }
+            classrooms: [102, 103],
+        };
     }
 
     render() {
@@ -23,7 +24,7 @@ export default class Building extends React.Component {
                         type='button' 
                         className='btn btn-danger'
                         onClick={(e) => {
-                            this.props.handleDeleteBuilding(this.props.buildingName)
+                            this.props.handleDeleteBuilding(this.props.buildingName);
                         }}>
                         Delete
                     </button>)
@@ -33,3 +34,10 @@ export default class Building extends React.Component {
         );
     }
 }
+
+Building.propTypes = {
+    building: PropTypes.array.isRequired,
+    buildingName: PropTypes.string.isRequired,
+    deleteVisibility: PropTypes.bool.isRequired,
+    handleDeleteBuilding: PropTypes.func.isRequired,
+};

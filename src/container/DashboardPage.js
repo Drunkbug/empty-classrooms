@@ -11,9 +11,9 @@ export default class DashboardPage extends React.Component {
         this.handleEditBuildings = this.handleEditBuildings.bind(this);
         this.state = {
             buildings: [],
-            deleteVisibility: false
-        }
-    };
+            deleteVisibility: false,
+        };
+    }
 
     componentDidMount() {
         try {
@@ -24,7 +24,7 @@ export default class DashboardPage extends React.Component {
                 this.setState(() => ({ buildings: buildings}));
             }
         } catch (e) {
-
+            
         }
     }
 

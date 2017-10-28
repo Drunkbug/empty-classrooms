@@ -11,7 +11,7 @@ export default class Building extends React.Component {
 
     render() {
         return (
-            <li key={this.props.building}
+            <li 
                 className='list-group-item d-flex align-items-center'>
                 <div className='p-2'>
                     {this.props.buildingName}
@@ -36,7 +36,6 @@ export default class Building extends React.Component {
 }
 
 Building.propTypes = {
-    building: PropTypes.array.isRequired,
     buildingName: PropTypes.string.isRequired,
     deleteVisibility: PropTypes.bool.isRequired,
     handleDeleteBuilding: PropTypes.func.isRequired,

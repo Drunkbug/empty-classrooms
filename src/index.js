@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IndexPage from './container/IndexPage';
+import './styles/styles.scss';
 
 ReactDOM.render(<IndexPage />, document.getElementById('app'));
 

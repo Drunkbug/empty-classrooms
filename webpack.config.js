@@ -1,5 +1,5 @@
 const path = require('path');
-
+//entry: './src/index.js',
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -23,5 +23,6 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
+        historyApiFallback: true,
     },
 };

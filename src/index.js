@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IndexPage from './container/IndexPage';
+import AppRounter from './routers/AppRouter';
 import './styles/styles.scss';
 
-ReactDOM.render(<IndexPage />, document.getElementById('app'));
+
+ReactDOM.render(<AppRounter />, document.getElementById('app'));
 
 
 // login page -> Student/School 

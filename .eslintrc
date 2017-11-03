@@ -5,7 +5,10 @@
     ],
     "parserOptions": {
         "ecmaVersion": 6,
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
     },
     "env": {
         "node": true,
@@ -18,7 +21,7 @@
             "always-multiline"
         ],
         "no-unused-vars": [
-            "error",
+            "warn",
             {
                 "vars": "local",
                 "args": "none"

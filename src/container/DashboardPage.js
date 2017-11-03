@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import Buildings from '../components/Buildings';
 import ControlPanel from '../components/ControlPanel';
 
@@ -43,13 +42,13 @@ export default class DashboardPage extends React.Component {
         }
 
         this.setState((prevState) => ({
-            buildings: prevState.buildings.concat(buildingName)
+            buildings: prevState.buildings.concat(buildingName),
         }));
     }
 
     handleDeleteBuilding(buildingName) {
         this.setState((prevState) => ({
-            buildings: prevState.buildings.filter((building) => buildingName !== building)
+            buildings: prevState.buildings.filter((building) => buildingName !== building),
         }));
     }
 
@@ -62,7 +61,6 @@ export default class DashboardPage extends React.Component {
         const panelTitle="Building List";
         return (
             <div>
-                <Header />
                 <ControlPanel 
                     panelTitle={panelTitle} 
                     handleAddBuilding={this.handleAddBuilding} 

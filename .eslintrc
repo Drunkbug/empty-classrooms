@@ -51,6 +51,12 @@
             {
                 "allowEmptyCatch": true
             }
+        ],
+        "react/display-name": [
+            "off",
+            {
+                "ignoreTranspilerName": false
+            }
         ]
     }
 }

@@ -5,7 +5,8 @@
   "author": "Leyi Qiang",
   "license": "MIT",
   "engines": {
-    "node": "8.7.0"
+    "node": "8.7.0",
+    "yarn": "1.2.1"
   },
   "scripts": {
     "build:dev": "webpack",

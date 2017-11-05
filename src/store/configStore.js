@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import buildingsReducer from '../reducers/buildings';
 import classroomsReducer from '../reducers/classrooms';
-import filtersReducer from '../reducers/filters';
+import buildingfilters from '../reducers/buildingfilters';
 
 export default () => {
     // store creation
@@ -9,7 +9,7 @@ export default () => {
         combineReducers({
             buildings: buildingsReducer,
             classrooms: classroomsReducer,
-            filters: filtersReducer,
+            buildingfilters: buildingfilters,
         })
     );
     return store;

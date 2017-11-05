@@ -1,7 +1,6 @@
 import React from 'react';
 import Buildings from '../components/Buildings';
-import ControlPanel from '../components/ControlPanel';
-
+import BuildingControlPanel from '../components/BuildingControlPanel';
 export default class DashboardPage extends React.Component {
     constructor(props) {
         super(props);
@@ -58,17 +57,10 @@ export default class DashboardPage extends React.Component {
     }
 
     render() {
-        const panelTitle="Building List";
         return (
             <div>
-                <ControlPanel 
-                    panelTitle={panelTitle} 
-                    handleAddBuilding={this.handleAddBuilding} 
-                    handleEditBuildings={this.handleEditBuildings}
-                    deleteVisibility={this.state.deleteVisibility}
-                />
+                <BuildingControlPanel />
                 <Buildings 
-                    buildings={this.state.buildings}
                     deleteVisibility={this.state.deleteVisibility}
                     handleDeleteBuilding={this.handleDeleteBuilding}
                 />

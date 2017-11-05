@@ -5,8 +5,8 @@ import AppRouter from './routers/AppRouter';
 import configStore from './store/configStore';
 import { addBuilding } from './actions/buildings';
 import { addClassroom } from './actions/classrooms';
-import getVisibleBuildings from './selectors/buildings';
 import './styles/styles.scss';
+import './firebase/firebase';
 
 const store = configStore();
 const buildingOne = store.dispatch(addBuilding('Ryder Hall'));
@@ -14,7 +14,7 @@ store.dispatch(addBuilding('Doge Hall'));
 store.dispatch(addClassroom(buildingOne.building.id, '301'));
 
 const state = store.getState();
-console.log(state);
+
 
 const jsx = (
     <Provider store={store}>

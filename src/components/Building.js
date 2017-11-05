@@ -17,7 +17,7 @@ export default class Building extends React.Component {
                     className='list-group-item d-flex align-items-center'>
                     <div className='p-2'>
                         <Link to={'building/' + this.props.buildingName}
-                            style={{ textDecoration: 'none' }} 
+                            style={{ textDecoration: 'none' }}
                         >
                             {this.props.buildingName}
                         </Link>
@@ -25,16 +25,13 @@ export default class Building extends React.Component {
                     <div className='ml-auto p-2 align-items-center'>
                         <span className="badge badge-primary badge-pill float-left">{this.state.classrooms.length}</span>
                     </div>
-                    {this.props.deleteVisibility &&
-                        (<button
-                            type='button'
-                            className='btn btn-danger'
-                            onClick={(e) => {
-                                this.props.handleDeleteBuilding(this.props.buildingName);
-                            }}>
-                            Delete
-                        </button>)
-                    }
+                    <button
+                        type='button'
+                        className='btn btn-danger'
+                        onClick={console.log('todo')}>
+                        Edit
+                    </button>
+
 
                 </li>
             </div>

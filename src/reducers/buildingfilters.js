@@ -1,10 +1,8 @@
-const filtersReducerDefaultState = {
+const buildingfiltersReducerDefaultState = {
     text: '',
-    startDate: undefined,
-    endDate: undefined,
 };
 
-const filtersReducer = (state=filtersReducerDefaultState, action) => {
+const filtersReducer = (state=buildingfiltersReducerDefaultState, action) => {
     switch(action.type) {
     case 'SET_TEXT_FILTER':
         return {

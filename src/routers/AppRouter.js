@@ -1,18 +1,30 @@
 import React from 'react';
 import Header from '../components/Header';
-import IndexPage from '../container/IndexPage';
+import BuildingListPage from '../container/BuildingListPage';
 import NotFound from '../components/NotFound';
-import Classrooms from '../components/Classrooms';
+import ClassroomListPage from '../container/ClassroomListPage';
 import Classroom from '../components/Classroom';
+import Classrooms from '../components/Classrooms';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+
+const withControlPanel = (WrappedComponent) => {
+    return (props) => (
+        <div>
+            <WrappedComponent {...props} />
+        </div>
+    );
+};
+
+const ClassRoomList = withControlPanel(Classrooms);
 
 const AppRouter = () => (
     <BrowserRouter>
         <div>
             <Header />
             <Switch>
-                <Route path='/' component={IndexPage} exact={true} />
-                <Route path='/building/:id' component={Classrooms} />
+                <Route path='/' component={BuildingListPage} exact={true} />
+                <Route path='/building/:id' component={ClassroomListPage} />
                 <Route path='/classroom/:id' component={Classroom} />
                 <Route component={NotFound} />
             </Switch>

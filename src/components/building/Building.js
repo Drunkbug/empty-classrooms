@@ -17,11 +17,7 @@ class Building extends React.Component {
                 <li
                     className='list-group-item d-flex align-items-center'>
                     <div className='p-2'>
-                        <Link to={'building/' + this.props.buildingName}
-                            style={{ textDecoration: 'none' }}
-                        >
-                            {this.props.buildingName}
-                        </Link>
+                        {this.props.buildingName}
                     </div>
                     <div className='ml-auto p-2 align-items-center'>
                         <span className="badge badge-primary badge-pill float-left">{this.state.classrooms.length}</span>

@@ -24,6 +24,7 @@ class AddBuilding extends React.Component {
         if (name) {
             this.props.dispatch(startAddBuilding(name));
             this.setState(() =>({ error: undefined }));
+            e.target.elements.buildingName.value = '';
         } else {
             this.setState(() => ({ error: 'Name should not be empty!' }));
         }

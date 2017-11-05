@@ -23,8 +23,8 @@ const Buildings = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        //buildings: getVisibleBuildings(state.buildings, state.buildingfilters),
         buildings: getVisibleBuildings(state.buildings, state.buildingfilters),
+        //buildings: getVisibleBuildings(state.buildings, state.buildingfilters),
 
     };
 };

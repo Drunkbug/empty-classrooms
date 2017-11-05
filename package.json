@@ -19,7 +19,6 @@
   "devDependencies": {
     "babel-cli": "6.24.1",
     "cross-env": "5.0.5",
-    "dotenv": "^4.0.0",
     "eslint": "^4.9.0",
     "eslint-plugin-react": "^7.4.0",
     "webpack-dev-server": "2.5.1"
@@ -47,6 +46,7 @@
     "style-loader": "0.18.2",
     "uuid": "3.1.0",
     "validator": "8.0.0",
-    "webpack": "3.1.0"
+    "webpack": "3.1.0",
+    "dotenv": "^4.0.0"
   }
 }

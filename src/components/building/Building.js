@@ -6,9 +6,6 @@ import { connect } from 'react-redux';
 class Building extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            classrooms: [102, 103],
-        };
     }
 
     render() {
@@ -20,7 +17,7 @@ class Building extends React.Component {
                         {this.props.buildingName}
                     </div>
                     <div className='ml-auto p-2 align-items-center'>
-                        <span className="badge badge-primary badge-pill float-left">{this.state.classrooms.length}</span>
+                        <span className="badge badge-primary badge-pill float-left">{this.props.totalClassrooms}</span>
                     </div>
                     <Link to={`/building/${this.props.id}`} className='btn btn-danger'>
                         Edit
@@ -36,6 +33,7 @@ class Building extends React.Component {
 Building.propTypes = {
     buildingName: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    totalClassrooms: PropTypes.number.isRequired,
 };
 
 export default Building;

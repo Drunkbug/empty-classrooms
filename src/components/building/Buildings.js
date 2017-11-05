@@ -14,6 +14,7 @@ const Buildings = (props) => {
                         key={building.id}
                         id={building.id}
                         buildingName={building.name}
+                        totalClassrooms={building.classrooms? building.classrooms.length : 0}
                     />
                 ))}
             </ul>

@@ -20,5 +20,5 @@ export const removeBuilding = ( id ) => ({
 export const setBuildingName = (id, name) => ({
     type: 'SET_BUILDING_NAME',
     id,
-    name,
+    name: name,
 });

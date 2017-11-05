@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { removeBuilding } from '../actions/buildings';
 
 class Building extends React.Component {
     constructor(props) {
@@ -27,14 +26,9 @@ class Building extends React.Component {
                     <div className='ml-auto p-2 align-items-center'>
                         <span className="badge badge-primary badge-pill float-left">{this.state.classrooms.length}</span>
                     </div>
-                    <button
-                        type='button'
-                        className='btn btn-danger'
-                        onClick={() => {
-                            this.props.dispatch(removeBuilding(this.props.id));
-                        }} >
-                        remove
-                    </button>
+                    <Link to={`/building/${this.props.id}`} className='btn btn-danger'>
+                        Edit
+                    </Link>
 
 
                 </li>
@@ -43,11 +37,9 @@ class Building extends React.Component {
     }
 }
 
-
 Building.propTypes = {
     buildingName: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
 };
 
-export default connect()(Building);
+export default Building;

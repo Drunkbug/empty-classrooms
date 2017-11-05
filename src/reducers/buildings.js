@@ -9,9 +9,10 @@ const buildingsReducer = (state=buildingsReducerDefaultState, action) => {
     case 'SET_BUILDING_NAME':
         return state.map((building) => {
             if (building.id === action.id) {
+                const name = action.name;
                 return {
                     ...building,
-                    ...action.name,
+                    name,
                 };
             } else {
                 return building;

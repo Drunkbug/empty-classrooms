@@ -12,9 +12,8 @@ const Buildings = (props) => {
                 {props.buildings.map((building) => (
                     <Building 
                         key={building.id}
+                        id={building.id}
                         buildingName={building.name}
-                        deleteVisibility={props.deleteVisibility}
-                        handleDeleteBuilding={props.handleDeleteBuilding}
                     />
                 ))}
             </ul>
@@ -28,12 +27,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-const ConnectedBuildings = connect(mapStateToProps)(Buildings);
 
 Buildings.propTypes = {
     buildings: PropTypes.arrayOf(PropTypes.object).isRequired,
-    deleteVisibility: PropTypes.bool.isRequired,
-    handleDeleteBuilding: PropTypes.func.isRequired,
 };
 
-export default ConnectedBuildings;
+export default connect(mapStateToProps)(Buildings);

@@ -24,7 +24,7 @@ const AppRouter = () => (
             <Header />
             <Switch>
                 <Route path='/' component={BuildingListPage} exact={true} />
-                <Route path='/building/:id' component={ClassroomListPage} />
+                <Route path='/classrooms/:id' component={ClassroomListPage} />
                 <Route path='/classroom/:id' component={Classroom} />
                 <Route component={NotFound} />
             </Switch>

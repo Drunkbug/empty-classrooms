@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import getVisibleBuildings from 'src/selectors/buildings';
 
-const Buildings = (props) => {
+const BuildingList = (props) => {
     return (
         <div className='container'>
             <ul className='list-group'>
@@ -14,7 +14,7 @@ const Buildings = (props) => {
                         key={building.id}
                         id={building.id}
                         buildingName={building.name}
-                        totalClassrooms={building.classrooms? building.classrooms.length : 0}
+                        totalClassrooms={building.classrooms.length}
                     />
                 ))}
             </ul>
@@ -31,8 +31,8 @@ const mapStateToProps = (state) => {
 };
 
 
-Buildings.propTypes = {
+BuildingList.propTypes = {
     buildings: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default connect(mapStateToProps)(Buildings);
+export default connect(mapStateToProps)(BuildingList);

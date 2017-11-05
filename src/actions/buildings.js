@@ -61,13 +61,35 @@ export const startSetBuildings = () => {
         // this return allows the index.js' promise after loading... work
         return database.ref('buildings').once('value').then((snapshot) =>{
             const buildings = [];
+            const classList = [];
             snapshot.forEach((childSnapshot) => {
+                // fetch classrooms ids
+                childSnapshot.classrooms && 
+                (childSnapshot.classrooms.forEach((classroomSnapshot) => {
+                    classList.push(classroomSnapshot.val());
+                }));
                 buildings.push({
                     id: childSnapshot.key,
                     ...childSnapshot.val(),
+                    classrooms: classList,
                 });
             });
             dispatch(setBuildings(buildings));
+        });
+    };
+};
+
+// ADD_CLASSROOM_TO_BUILDING
+export const addClassroomToBuilding = ( id, cid ) => ({
+    type: 'ADD_CLASSROOM_TO_BUILDING',
+    id, 
+    cid,
+});
+
+export const startAddClassroomToBuilding = ( id, cid ) => {
+    return (dispatch) => {
+        database.ref(`buildings/${id}/classrooms`).push(cid).then((ref) => {
+            dispatch(addClassroomToBuilding(id, cid));
         });
     };
 };

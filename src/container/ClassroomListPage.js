@@ -1,32 +1,22 @@
 import React from 'react';
-import Classrooms from 'src/components/classroom/Classrooms';
-import ControlPanel from 'src/components/ControlPanel';
+import ClassroomList from 'src/components/classroom/ClassroomList';
+import ClassroomControlPanel from 'src/components/classroom/ClassroomControlPanel';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 
-export default class ClassroomListPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            deleteVisibility: false,
-        };
-    }
+// ReactDOM.render(<div className='container'><Header /><p>Loading...</p></div>, document.getElementById('app'));
 
-    render() {
-        const panelTitle="Classroom List";
-        //                    buildings={this.state.buildings} in Buildings
-        return (
-            <div>
-                <ControlPanel 
-                    panelTitle={panelTitle} 
-                />
-                <Classrooms 
-                    deleteVisibility={this.state.deleteVisibility}
-                    id={this.props.match.params.id}
-                />
-            </div>
-        );
-    }
-}
+// store.dispatch(startSetBuildings()).then(() => {
+//     ReactDOM.render(jsx, document.getElementById('app'));    
+// });
+const ClassroomListPage = (props) => (
+    <div>
+        <ClassroomControlPanel bid={props.match.params.id} />
+        <ClassroomList bid={props.match.params.id} />
+    </div>
+);
+
+export default ClassroomListPage;
 
 ClassroomListPage.propTypes = {
     match: PropTypes.object.isRequired,

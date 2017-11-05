@@ -1,18 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AddBuilding from './AddBuilding';
 import BuildingListFilter from './BuildingListFilter';
 
-export default class BuildingControlPanel extends React.Component {
+const BuildingControlPanel = () => (
+    <div className='container'>
+        <div className='float-right ml-1'>
+            <BuildingListFilter />
+            <AddBuilding />
+        </div>
+    </div>
+);
 
-    render() {
-        return (
-            <div className='container'>
-                <div className='float-right ml-1'>
-                    <BuildingListFilter />
-                    <AddBuilding />
-                </div>
-            </div>
-        );
-    }
-}
+export default BuildingControlPanel;

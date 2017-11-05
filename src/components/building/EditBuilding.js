@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeBuilding } from 'src/actions/buildings';
-import { setBuildingName } from 'src/actions/buildings';
+import { startRemoveBuilding } from 'src/actions/buildings';
+import { startSetBuildingName } from 'src/actions/buildings';
 
 
 class EditBuilding extends React.Component {
@@ -26,13 +26,13 @@ class EditBuilding extends React.Component {
         e.preventDefault();
         const name = e.target.elements.buildingName.value;
         const id = this.props.building.id;
-        this.props.dispatch(setBuildingName(id, name));
+        this.props.dispatch(startSetBuildingName(id, name));
         this.props.history.push('/');        
 
     }
 
     onRemove() {
-        this.props.dispatch(removeBuilding(this.props.building.id));
+        this.props.dispatch(startRemoveBuilding(this.props.building.id));
         this.props.history.push('/');
     }
 

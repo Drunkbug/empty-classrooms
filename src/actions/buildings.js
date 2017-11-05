@@ -27,12 +27,28 @@ export const removeBuilding = ( id ) => ({
     id,
 });
 
+export const startRemoveBuilding = (id) => {
+    return (dispatch) => {
+        return database.ref(`buildings/${id}`).remove().then(() => {
+            dispatch(removeBuilding(id));
+        });
+    };
+};
+
 // SET_BUILDING_NAME
 export const setBuildingName = (id, name) => ({
     type: 'SET_BUILDING_NAME',
     id,
     name: name,
 });
+
+export const startSetBuildingName = (id, name) => {
+    return (dispatch) => {
+        return database.ref(`buildings/${id}`).update({name: name}).then(() => {
+            dispatch(setBuildingName(id, name));
+        });
+    };
+};
 
 // SET_BUILDINGS
 export const setBuildings = (buildings) => ({

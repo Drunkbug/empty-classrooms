@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 class AddBuilding extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     name: '',
-        // };
+        this.state = {
+            error: undefined,
+        };
         //this.onNameChange = this.onNameChange.bind(this);
         this.onNameSubmit = this.onNameSubmit.bind(this);
     }
@@ -21,7 +21,12 @@ class AddBuilding extends React.Component {
     onNameSubmit(e) {
         e.preventDefault();
         const name = e.target.elements.buildingName.value;
-        this.props.dispatch(addBuilding(name));
+        if (name) {
+            this.props.dispatch(addBuilding(name));
+            this.setState(() =>({ error: undefined }));
+        } else {
+            this.setState(() => ({ error: 'Name should not be empty!' }));
+        }
     } 
     
     render() {
@@ -37,6 +42,7 @@ class AddBuilding extends React.Component {
                         />
                         <button type="submit" className="btn btn-primary">Add Building</button>
                     </div>
+                    {this.state.error && <p>{this.state.error}</p>}
                 </form>
             </div>
         );

@@ -9,8 +9,8 @@ export default class BuildingControlPanel extends React.Component {
         return (
             <div className='container'>
                 <div className='float-right ml-1'>
-                    <AddBuilding />
                     <BuildingListFilter />
+                    <AddBuilding />
                 </div>
             </div>
         );

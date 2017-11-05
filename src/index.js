@@ -9,9 +9,9 @@ import 'src/styles/styles.scss';
 import 'src/firebase/firebase';
 
 const store = configStore();
-const buildingOne = store.dispatch(addBuilding('Ryder Hall'));
-store.dispatch(addBuilding('Doge Hall'));
-store.dispatch(addClassroom(buildingOne.building.id, '301'));
+// const buildingOne = store.dispatch(addBuilding('Ryder Hall'));
+// store.dispatch(addBuilding('Doge Hall'));
+// store.dispatch(addClassroom(buildingOne.building.id, '301'));
 
 const state = store.getState();
 

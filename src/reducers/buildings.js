@@ -18,19 +18,6 @@ const buildingsReducer = (state=buildingsReducerDefaultState, action) => {
                 return building;
             }
         });
-    case 'ADD_CLASSROOM':
-        return state.map((building) => {
-            if (building.id === action.classroom.bid) {
-                const prevClassrooms = building.classrooms;
-                const classrooms = prevClassrooms.concat(action.classroom.id);
-                return {
-                    ...building,
-                    classrooms,
-                };
-            } else {
-                return building;
-            }
-        });
     default:
         return state;
     }

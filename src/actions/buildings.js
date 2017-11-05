@@ -1,14 +1,26 @@
 import uuid from 'uuid';
+import database from 'src/firebase/firebase';
 
 // ADD_BUILDING
-export const addBuilding = ( name ) => ({
+export const addBuilding = ( building ) => ({
     type: 'ADD_BUILDING',
-    building: {
-        id: uuid(),
-        name: name,
-        classrooms: [],
-    },
+    building,
 });
+
+export const startAddBuilding = ( name ) => {
+    return (dispatch) => {
+        // const {
+        //     name= '',
+        // } = buildingData;
+        const building = { name: name, classrooms: {} };
+        database.ref('buildings').push(building).then((ref) => {
+            dispatch(addBuilding({
+                id: ref.key,
+                ...building,
+            }));
+        });
+    };
+};
 
 // REMOVE_BUILDING
 export const removeBuilding = ( id ) => ({

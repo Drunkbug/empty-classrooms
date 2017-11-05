@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addBuilding } from 'src/actions/buildings';
+import { startAddBuilding } from 'src/actions/buildings';
 import { connect } from 'react-redux';
 
 class AddBuilding extends React.Component {
@@ -22,7 +22,7 @@ class AddBuilding extends React.Component {
         e.preventDefault();
         const name = e.target.elements.buildingName.value;
         if (name) {
-            this.props.dispatch(addBuilding(name));
+            this.props.dispatch(startAddBuilding(name));
             this.setState(() =>({ error: undefined }));
         } else {
             this.setState(() => ({ error: 'Name should not be empty!' }));

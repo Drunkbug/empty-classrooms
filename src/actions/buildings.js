@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import database from 'src/firebase/firebase';
 
 // ADD_BUILDING
@@ -34,3 +33,25 @@ export const setBuildingName = (id, name) => ({
     id,
     name: name,
 });
+
+// SET_BUILDINGS
+export const setBuildings = (buildings) => ({
+    type: 'SET_BUILDINGS',
+    buildings,
+});
+
+export const startSetBuildings = () => {
+    return (dispatch) => {
+        // this return allows the index.js' promise after loading... work
+        return database.ref('buildings').once('value').then((snapshot) =>{
+            const buildings = [];
+            snapshot.forEach((childSnapshot) => {
+                buildings.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val(),
+                });
+            });
+            dispatch(setBuildings(buildings));
+        });
+    };
+};

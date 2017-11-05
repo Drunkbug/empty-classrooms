@@ -18,6 +18,8 @@ const buildingsReducer = (state=buildingsReducerDefaultState, action) => {
                 return building;
             }
         });
+    case 'SET_BUILDINGS':
+        return action.buildings;
     default:
         return state;
     }

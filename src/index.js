@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from 'src/routers/AppRouter';
 import configStore from 'src/store/configStore';
-import { addBuilding } from 'src/actions/buildings';
+import Header from 'src/components/Header';
+import { startSetBuildings } from 'src/actions/buildings';
 import { addClassroom } from 'src/actions/classrooms';
 import 'src/styles/styles.scss';
 import 'src/firebase/firebase';
@@ -21,11 +22,8 @@ const jsx = (
         <AppRouter />
     </Provider>
 );
+ReactDOM.render(<div className='container'><Header /><p>Loading...</p></div>, document.getElementById('app'));
 
-ReactDOM.render(jsx, document.getElementById('app'));
-
-// login page -> Student/School 
-// Student -> empty classroom lists
-// Student -> personal info
-// School -> dashboard(arrange buildings/classrooms)
-// School -> school info
+store.dispatch(startSetBuildings()).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'));    
+});

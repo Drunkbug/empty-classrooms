@@ -1,8 +1,8 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const rootPath =  path.resolve(path.dirname("./"));
-const distPath = path.resolve(rootPath, "./dist");
+const srcPath = path.resolve(rootPath, "./src");
+
 
 module.exports = (env) => {
     const isProduction = env === 'production';
@@ -10,7 +10,7 @@ module.exports = (env) => {
     return {
         entry: './src/index.js',
         output: {
-            path: distPath,
+            path: path.join(__dirname, 'public'),
             filename: 'bundle.js',
         },
         module: {
@@ -35,6 +35,11 @@ module.exports = (env) => {
                             },
                         }]}),
             }],
+        },
+        resolve: {
+            alias: {
+                src: srcPath,
+            },
         },
         plugins: [
             CSSExtract,

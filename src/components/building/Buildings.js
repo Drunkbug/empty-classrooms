@@ -2,7 +2,7 @@ import React from 'react';
 import Building from './Building';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import getVisibleBuildings from '../selectors/buildings';
+import getVisibleBuildings from 'src/selectors/buildings';
 
 const Buildings = (props) => {
     return (

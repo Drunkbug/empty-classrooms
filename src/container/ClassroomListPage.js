@@ -1,6 +1,6 @@
 import React from 'react';
-import Classrooms from '../components/Classrooms';
-import ControlPanel from '../components/ControlPanel';
+import Classrooms from 'src/components/classroom/Classrooms';
+import ControlPanel from 'src/components/ControlPanel';
 import PropTypes from 'prop-types';
 
 export default class ClassroomListPage extends React.Component {

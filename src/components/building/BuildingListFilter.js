@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setTextFilter } from '../actions/buildingfilters';
+import { setTextFilter } from 'src/actions/buildingfilters';
 
 const BuildingListFilters = (props) => (
     <div className='container mt-1'>

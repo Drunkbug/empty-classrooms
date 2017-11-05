@@ -1,6 +1,6 @@
 import React from 'react';
-import Buildings from '../components/Buildings';
-import BuildingControlPanel from '../components/BuildingControlPanel';
+import Buildings from 'src/components/building/Buildings';
+import BuildingControlPanel from 'src/components/building/BuildingControlPanel';
 const DashboardPage = (props) => (
     <div>
         <BuildingControlPanel />

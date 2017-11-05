@@ -1,5 +1,5 @@
 import React from 'react';
-import AddBuilding from './AddBuilding';
+import AddBuilding from './building/AddBuilding';
 import PropTypes from 'prop-types';
 
 const ControlPanel = (props) => {

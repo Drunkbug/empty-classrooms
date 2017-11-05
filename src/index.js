@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
-import configStore from './store/configStore';
-import { addBuilding } from './actions/buildings';
-import { addClassroom } from './actions/classrooms';
-import './styles/styles.scss';
-import './firebase/firebase';
+import AppRouter from 'src/routers/AppRouter';
+import configStore from 'src/store/configStore';
+import { addBuilding } from 'src/actions/buildings';
+import { addClassroom } from 'src/actions/classrooms';
+import 'src/styles/styles.scss';
+import 'src/firebase/firebase';
 
 const store = configStore();
 const buildingOne = store.dispatch(addBuilding('Ryder Hall'));

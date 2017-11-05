@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addBuilding } from '../actions/buildings';
+import { addBuilding } from 'src/actions/buildings';
 import { connect } from 'react-redux';
 
 class AddBuilding extends React.Component {

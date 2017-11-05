@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeBuilding } from '../actions/buildings';
-import { setBuildingName } from '../actions/buildings';
+import { removeBuilding } from 'src/actions/buildings';
+import { setBuildingName } from 'src/actions/buildings';
 
 
 class EditBuilding extends React.Component {
@@ -27,6 +27,7 @@ class EditBuilding extends React.Component {
         const name = e.target.elements.buildingName.value;
         const id = this.props.building.id;
         this.props.dispatch(setBuildingName(id, name));
+        this.props.history.push('/');        
 
     }
 

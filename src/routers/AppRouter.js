@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
-import BuildingListPage from '../container/BuildingListPage';
-import NotFound from '../components/NotFound';
-import ClassroomListPage from '../container/ClassroomListPage';
-import Classroom from '../components/Classroom';
-import Classrooms from '../components/Classrooms';
-import EditBuilding from '../components/EditBuilding';
+import Header from 'src/components/Header';
+import BuildingListPage from 'src/container/BuildingListPage';
+import NotFound from 'src/components/NotFound';
+import ClassroomListPage from 'src/container/ClassroomListPage';
+import Classroom from 'src/components/classroom/Classroom';
+import Classrooms from 'src/components/classroom/Classrooms';
+import EditBuilding from 'src/components/building/EditBuilding';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 

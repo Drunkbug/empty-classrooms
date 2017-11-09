@@ -3,7 +3,7 @@ import {
     ADD_BUILDING,
     ADD_BUILDING_ERROR,
     ADD_BUILDING_SUCCESS,
-} from 'src/actions/addBuilding';
+} from 'src/actions/buildings';
 
 const addBuildingState = new Record({
     isLoading: false,

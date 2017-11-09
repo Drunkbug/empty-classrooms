@@ -1,95 +1,33 @@
-import database from 'src/firebase/firebase';
+import axios from 'axios';
 
-// ADD_BUILDING
-export const addBuilding = ( building ) => ({
-    type: 'ADD_BUILDING',
-    building,
+export const ADD_BUILDING = 'ADD_BUILDING';
+export const ADD_BUILDING_SUCCESS = 'ADD_BUILDING_SUCCESS';
+export const ADD_BUILDING_ERROR = 'ADD_BUILDING_ERROR';
+
+const addBuilding = () => ({
+    type: ADD_BUILDING,
 });
 
-export const startAddBuilding = ( name ) => {
-    return (dispatch) => {
-        // const {
-        //     name= '',
-        // } = buildingData;
-        const building = { name: name, classrooms: {} };
-        database.ref('buildings').push(building).then((ref) => {
-            dispatch(addBuilding({
-                id: ref.key,
-                ...building,
-            }));
-        });
-    };
-};
-
-// REMOVE_BUILDING
-export const removeBuilding = ( id ) => ({
-    type: 'REMOVE_BUILDING',
-    id,
+const addBuildingSuccess = (name) => ({
+    type: ADD_BUILDING_SUCCESS,
+    payload: name,
 });
 
-export const startRemoveBuilding = (id) => {
-    return (dispatch) => {
-        return database.ref(`buildings/${id}`).remove().then(() => {
-            dispatch(removeBuilding(id));
-        });
-    };
-};
-
-// SET_BUILDING_NAME
-export const setBuildingName = (id, name) => ({
-    type: 'SET_BUILDING_NAME',
-    id,
-    name: name,
+const addBuildingError = (error) => ({
+    type: ADD_BUILDING_ERROR,
+    payload: error,
 });
 
-export const startSetBuildingName = (id, name) => {
+export const startAddBuilding = (name) => {
     return (dispatch) => {
-        return database.ref(`buildings/${id}`).update({name: name}).then(() => {
-            dispatch(setBuildingName(id, name));
-        });
-    };
-};
-
-// SET_BUILDINGS
-export const setBuildings = (buildings) => ({
-    type: 'SET_BUILDINGS',
-    buildings,
-});
-
-export const startSetBuildings = () => {
-    return (dispatch) => {
-        // this return allows the index.js' promise after loading... work
-        return database.ref('buildings').once('value').then((snapshot) =>{
-            const buildings = [];
-            const classList = [];
-            snapshot.forEach((childSnapshot) => {
-                // fetch classrooms ids
-                childSnapshot.classrooms && 
-                (childSnapshot.classrooms.forEach((classroomSnapshot) => {
-                    classList.push(classroomSnapshot.val());
-                }));
-                buildings.push({
-                    id: childSnapshot.key,
-                    ...childSnapshot.val(),
-                    classrooms: classList,
-                });
+        dispatch(addBuilding());
+        const url = `/api/ec/building/create`;
+        axios.post(url, {buildingName: name})
+            .then(res => {
+                dispatch(addBuildingSuccess(name));                
+            })
+            .catch(error => {
+                dispatch(addBuildingError(error));
             });
-            dispatch(setBuildings(buildings));
-        });
-    };
-};
-
-// ADD_CLASSROOM_TO_BUILDING
-export const addClassroomToBuilding = ( id, cid ) => ({
-    type: 'ADD_CLASSROOM_TO_BUILDING',
-    id, 
-    cid,
-});
-
-export const startAddClassroomToBuilding = ( id, cid ) => {
-    return (dispatch) => {
-        database.ref(`buildings/${id}/classrooms`).push(cid).then((ref) => {
-            dispatch(addClassroomToBuilding(id, cid));
-        });
     };
 };

@@ -3,14 +3,23 @@ import Building from './Building';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import getVisibleBuildings from 'src/selectors/buildings';
+import { startSetBuildings } from 'src/actions/buildings';
 
-const BuildingList = (props) => {
-    return (
-        <div className='container'>
+class BuildingList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        // this.props.setBuildings();
+    }
+
+    render() {
+        return (<div className='container'>
             <ul className='list-group'>
-                {props.buildings.length === 0 && <p>No Result!</p>}
-                {props.buildings.map((building) => (
-                    <Building 
+                {this.props.buildings.length === 0 && <p>No Result!</p>}
+                {this.props.buildings.map((building) => (
+                    <Building
                         key={building.id}
                         id={building.id}
                         buildingName={building.name}
@@ -18,21 +27,29 @@ const BuildingList = (props) => {
                     />
                 ))}
             </ul>
-        </div>
-    );
-};
+        </div>);
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
-        buildings: getVisibleBuildings(state.buildings, state.buildingfilters),
         //buildings: getVisibleBuildings(state.buildings, state.buildingfilters),
+        buildings: [],
+    };
+};
 
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        //setBuildings: () => dispatch(startSetBuildings()),
     };
 };
 
 
 BuildingList.propTypes = {
     buildings: PropTypes.arrayOf(PropTypes.object).isRequired,
+    setBuildings: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(BuildingList);
+export default connect(mapStateToProps, mapDispatchToProps)(BuildingList);

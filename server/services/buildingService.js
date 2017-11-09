@@ -1,6 +1,7 @@
-module.exports = (app, buildingModel) => {
+const buildingService = (app, buildingModel) => {
     const createBuilding = (req, res) => {
-        const building = req.body.building;
+        const buildingName = req.body.buildingName;
+        const building = {buildingName: buildingName, clasrooms: []};
         buildingModel
             .createBuilding(building)
             .then(
@@ -14,3 +15,5 @@ module.exports = (app, buildingModel) => {
     };
     app.post("/api/ec/building/create", createBuilding);
 };
+
+export default buildingService;

@@ -7,14 +7,12 @@ const Classroom = (props) => (
         <li
             className='list-group-item d-flex'>
             <div className='p-2'>
-                <Link to={`/building/${props.id}/classroom`}>
-                    {props.classroomName}
-                </Link>
+                {props.classroomName}
             </div>
             <div className='ml-auto p-2 align-items-center'>            
-                <Link to={`/building/${props.id}`} className='btn btn-danger'>
+                <button className='btn btn-danger'>
                     Edit
-                </Link>
+                </button>
             </div>
 
 
@@ -25,7 +23,7 @@ const Classroom = (props) => (
 
 Classroom.propTypes = {
     classroomName: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    cid: PropTypes.string.isRequired,
 };
 
 export default Classroom;

@@ -11,8 +11,8 @@ import ReactDOM from 'react-dom';
 // });
 const ClassroomListPage = (props) => (
     <div>
-        <ClassroomControlPanel bid={props.match.params.id} />
-        <ClassroomList bid={props.match.params.id} />
+        <ClassroomControlPanel id={props.match.params.id} />
+        <ClassroomList id={props.match.params.id} />
     </div>
 );
 

@@ -1,18 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import buildingsReducer from 'src/reducers/buildings';
-import classroomsReducer from 'src/reducers/classrooms';
+import addBuildingReducer from 'src/reducers/addBuilding';
 import buildingfilters from 'src/reducers/buildingfilters';
-import addClassroomReducer from 'src/reducers/addclassroom';
+import classroomsReducer from 'src/reducers/classrooms';
 import thunk from 'redux-thunk';
 
 export default () => {
     // store creation
     const store = createStore(
         combineReducers({
-            buildings: buildingsReducer,
-            classrooms: classroomsReducer,
+            addBuilding: addBuildingReducer,
             buildingfilters: buildingfilters,
-            addclassroom: addClassroomReducer,
+            classrooms: classroomsReducer,
         }),
         applyMiddleware(thunk)
     );

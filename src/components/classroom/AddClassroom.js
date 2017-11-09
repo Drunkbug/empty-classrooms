@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { startAddClassroom } from 'src/actions/classrooms';
 import { startAddClassroomToBuilding } from 'src/actions/buildings';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class AddClassroom extends React.Component {
@@ -16,11 +15,11 @@ class AddClassroom extends React.Component {
 
     onNameSubmit(e) {
         e.preventDefault();
-        const name = e.target.elements.classroomName.value;        
+        const name = e.target.elements.classroomName.value;  
+        
         if (name) {
-            this.props.dispatch(startAddClassroom(name));
-            console.log('pcid:', this.props.addedCid);
-            this.props.dispatch(startAddClassroomToBuilding(this.props.id, this.props.addedCid));
+            this.props.onAddClassroom(this.props.id, name);
+            e.target.elements.classroomName.value = '';            
             this.setState(() =>({ error: undefined }));
             // this.props.history.push();
         } else {
@@ -40,7 +39,7 @@ class AddClassroom extends React.Component {
                             placeholder='Classroom Name'
                             name='classroomName'
                         />
-                        <button type="submit" className="btn btn-primary">Create Classroom</button>
+                        <button type="submit" className="btn btn-primary">Add Classroom</button>
                     </div>
                     {this.state.error && <p>{this.state.error}</p>}
                 </form>
@@ -49,21 +48,25 @@ class AddClassroom extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
-        addedCid: state.addclassroom,
+        // addedCid: state. addclassroom.payload.cid,        
         //buildings: getVisibleBuildings(state.buildings, state.buildingfilters),
 
     };
 };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddClassroom: (id, name) => dispatch(startAddClassroom(id, name)),
+    };
+};
 
 AddClassroom.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    addedCid: PropTypes.string.isRequired,
-    match: PropTypes.object.isRequired,
+    // dispatch: PropTypes.func.isRequired,
+    onAddClassroom: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     // history: PropTypes.object.isRequired,
 };
 
 //export default withRouter(AddClassroom);
-export default connect(mapStateToProps)(AddClassroom);
+export default connect(mapStateToProps, mapDispatchToProps)(AddClassroom);

@@ -22,7 +22,7 @@ class AddBuilding extends React.Component {
         e.preventDefault();
         const name = e.target.elements.buildingName.value;
         if (name) {
-            this.props.dispatch(startAddBuilding(name));
+            this.props.onAddBuilding(name);
             this.setState(() =>({ error: undefined }));
             e.target.elements.buildingName.value = '';
         } else {
@@ -50,8 +50,19 @@ class AddBuilding extends React.Component {
     }
 }
 
-AddBuilding.propTypes = {
-    dispatch: PropTypes.func.isRequired,
+const mapStateToProps = (state, props) => {
+    return {
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddBuilding: (name) => dispatch(startAddBuilding(name)),
+    };
 };
 
-export default connect()(AddBuilding);
+
+AddBuilding.propTypes = {
+    onAddBuilding: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBuilding);

@@ -20,6 +20,10 @@ module.exports = (env) => {
                 loader: 'babel-loader',
                 test: /\.js$/,
                 exclude: /node_modules/,
+                options: {
+                    presets:['react', 'env'],
+                    plugins: [ "transform-object-rest-spread"]
+                }
             }, {
                 test: /\.scss$/,
                 use: CSSExtract.extract({
